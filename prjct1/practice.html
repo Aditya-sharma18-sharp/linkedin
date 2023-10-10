@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      *{
+        margin:0%;
+        padding:0%;
+        color:white;
+      }
+#again{
+  padding:10px;
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: rgb(21, 140, 245);
+  color:black;
+  margin-top: 2vh;
+  margin-left: 1vw;
+  border-radius: 3px;
+  border: none;
+  font-size: 700;
+}
+#hdr{
+  display:flex;
+  justify-content: space-between;
+height: auto;
+background-color: red;
+padding: 10px;
+margin-bottom: 10vh;
+}
+#btw{
+  text-align: end;
+  margin-top: 2px;
+  margin: 15px;
+padding:5px;
+  border: 4px solid red;
+  border-top: none;
+  border-bottom: none;
+  border-radius: 30%;
+
+}
+#center{
+margin-top: 10vh;
+display: flex;
+text-align: center;
+justify-content: center;
+border-bottom: 5px solid white;
+margin-bottom: 15vh;
+  }
+#no{
+margin-bottom: -6vh;
+  padding: 3vh;
+  text-align: center;
+  justify-content: center;
+  color:black;
+  font-size: larger;
+}
+#bottom{
+  display:flex;
+}
+#check{
+  border: 2px solid white;
+  background-color:inherit;
+  padding: 10px 10px 10px 20px;
+  margin-left: 10vw;
+  font-weight: 900;
+  font-size: larger;
+  display: block;
+}
+#checkbutton{
+  display: block;
+  margin-left: 11.5vw;
+padding:10px 20px;
+margin-top: 1vh;
+background-color: red;
+color: white;
+font-weight: 700;
+}
+#bottom2{
+  margin-left:15vw;
+}
+    </style>
+</head>
+<body style="background-color: black;">
+  <div id="hdr">
+    <button id="again">Again</button>
+    <h2 id="btw"> Betweeen 1 and 20 </h2>
+  </div>
+  <h1 style="color: cadetblue;  margin-left:10vw">
+    Guess My Number!
+  </h1>
+<div id="center">
+<button id="no"><h1 id="getno" style="color:black;">?</h1></button>
+</div>
+<div id="bottom">
+<div id="bottom1">
+  <input type="number" name="check"  value="15" id="check" min="0" max="20">
+  <input type="button" id="checkbutton" value="check!">
+</div>
+<div id="bottom2">
+  <div id="getguessing" style="margin-bottom: 2vh;"> Start guessing...</div>
+  <label style="display:flex;margin-bottom: 2vh;">Left Chances: <p style="margin-left:10px;"id="getscore">here</p></label>
+  <label style="display:flex"for="score">Highscore : <p style="margin-left:10px;" id="getHighscore" >here</p></label>
+
+</div>
+</div>
+<h1 style="text-align: center; margin-top:10vh">Thankyou For Playing Our Game</h1>
+<script>
+  const score = document.querySelector("#getscore")
+const body = document.querySelector("body");
+const getguessing = document.querySelector("#getguessing")
+const questionmark=document.querySelector("#getno");// ? shown on upside 
+const number = document.querySelector("#check");// number shown upside check button
+const checkbutton = document.querySelector("#checkbutton"); // the button in red color
+const arraynumber = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+const getHighscore = document.querySelector("#getHighscore");
+let timeleft = 0;
+let highscore = 0;
+
+ checkbutton.addEventListener('click', function(){      
+  let getarraynumber =   arraynumber[(Math.floor(Math.random()*20))];
+  let text ="";
+  questionmark.innerHTML = number.value;
+  getHighscore.innerHTML = highscore;
+
+  {
+  if(number.value > getarraynumber){
+    text = `your guess is too high`;
+  }
+  else if (number.value < getarraynumber){
+    text = ` your guess is too low`;
+  }
+  else if (number.value == getarraynumber){
+    text = `your guess is correct`;
+    body.style.backgroundColor="green";
+    highscore += 1;
+    getHighscore.innerHTML = highscore;
+   
+
+  }
+  else{
+    text = ` something wrong is happened`;
+  }
+  }
+   getguessing.innerHTML = text;
+   if(true){
+    timeleft += 1;
+    score.innerHTML = ` ${20 - timeleft}`;
+   }
+})
+// let markw = 95;
+// let johnw = 85;
+// let johnh = 1.76;
+// let markh = 1.85;
+// markw=Number.parseFloat(markw);
+// markh=parseFloat(markh);
+// johnw=parseFloat(johnw);
+// johnh=parseFloat(johnh);
+
+
+
+
+// let output = 0 ;
+// const BMI = ( mass , height)=>
+// {
+//    output = (mass / height ** 2);
+//    return output;
+// }
+//  const mark = BMI(markw , markh);
+//  const john = BMI(johnw , johnh);
+
+//  console.log(` body index of mark ${mark.toFixed(2)}`);
+//  console.log(` body index of john ${john.toFixed(2)}`);
+
+// const teamascore = [43,50,59] ;
+// const teamb = [89,48,89];
+// let scorea=0;
+// let scoreb=0;
+// let finalea = 0;
+// let finaleb = 0;
+// teamascore.forEach((index)=>{
+// scorea += index;
+// });
+// teamb.forEach((index)=>{
+// scoreb +=index;
+// })
+// const average=(a,b)=>{
+//     return (a / b.length);
+// }
+//  finalea = (average(scorea , teamascore ));
+// finaleb = (average(scoreb , teamb));
+// if(finalea > finaleb){
+//     console.log(`team a is winnner  with this number ${finalea - finaleb}`);
+// }
+// else if(finaleb > finalea) {
+//    console.log(`team b is winner with this number ${finaleb - finalea}`);
+// }
+// const date = new Date;
+// let day = date.getDay();
+// const week = ["sunday" ,"monday","tuesday","wednesday","thursday","friday", "saturday"]
+// switch(week[day]){
+//     case "monday":
+//         console.log(`today is monday`);
+//         break;
+//         case "tuesday":
+//         console.log(`today is tuesday`);
+//         break;
+//         case "wednesday":
+//         console.log(`today is wednesday`);
+//         break;
+//         case "thursday":
+//         console.log(`today is thursday`);
+//         break;
+//         case "friday":
+//         console.log(`today is friday`);
+//         break;
+//         case "saturday":
+//         console.log(`today is saturday`);
+//         break;
+//         case "sunday":
+//         console.log(`today is sunday`);
+//         break;
+
+// }
+// 
+
+// const dolphins = [ 70 , 80 ,98];
+// const koalas = [ 50,60,30];
+
+//   function findaverage (team){
+//     let score;
+//    let average;
+//   for(let i=0; i<team.length; i++){
+//     score += team[i];
+//   }
+//   average = (score/team.length);
+//   return average;
+// }
+// const teama = findaverage(koalas);
+// const teamb = findaverage(dolphins);
+// if (teama >= 2*teamb){
+//     alert(`koalas is win`)
+// }
+// else if(teamb >= 2*teama){
+//     alert(`dolphin is win`)
+// }
+// else{
+//     alert(`none of them is win`)
+// }
+// const markmiller = { name:"Mark" ,
+// mass : 70,
+// height:1.7,
+// bmi : function(){
+//  return(this.mass/ this.height)
+// }
+// }
+// const johnsmith = { name:"john" ,
+// mass : 90,
+// height:1.9,
+// bmi : function(){
+//     let value = this.mass/ this.height;
+//     return value;
+// }
+// }
+
+// if(markmiller['bmi']() > johnsmith['bmi']()){
+//   console.log(`mark bmi ${markmiller.bmi() - johnsmith.bmi()} is higher than john bmi `);
+// }
+//  else if(markmiller['bmi']() < johnsmith['bmi']()){
+//   console.log(`john bmi ${johnsmith['bmi']() - markmiller.bmi()} is higher than mark bmi`);
+// }
+//  const bills = [300,50,560,345,120,450,67,500,340,500];
+//  const tip = [];
+//  const tiptotal = [];
+//  let sum = 0;
+//  for(let i=0; i<10;i++){
+// if(bills[i]<50 || bills[i]>300){
+//   tip.push(bills[i]*0.2);
+// }
+// else if(bills[i]>50 || bills[i]<300){
+//   tip.push((bills[i]*15)/100);
+// }
+// else{
+//   console.log("somethimg is happened");
+// }
+//  };
+//   for (let x of tip) {
+//     sum +=tip[x];
+    
+//   }
+
+//  console.log(tip);
+//  console.log(bills);
+//  console.log(tiptotal.push(sum));
+
+// const temperature = [ 3, -2 , -6 ,-1,'error',9,13,17,
+//                     15,14,5,9,8];
+//                     let text = [];
+//                   temperature.forEach(max);
+//                   function max(value){
+//                     if(typeof value === 'number' ){
+//                       text.push(value);
+//                     }
+//                     else{
+//                       console.log('error');
+//                     }
+//                   }
+//                 let maxvalue = Math.max(...text);
+//                 let minvalue = Math.min(...text);
+// console.log(maxvalue);
+// console.log(minvalue);
+//   minvalue = (minvalue<0)? -(minvalue): +(minvalue);
+// const  temperature_amplitude = maxvalue - minvalue;
+// console.log(temperature_amplitude);
+
+// const temp1 = [17,21,23];
+// const temp2 =[12,5,-5,0,4];
+// let print="";
+// temp2.forEach(prin);
+// function prin(value , index){
+//    print +=`... ${value}degree in ${index + 1} Day`+ " " 
+// }
+// console.log(print);
+
+
+</script>
+ </body>
+ </html>
